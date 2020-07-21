@@ -9,8 +9,8 @@ from datetime import datetime
 # Configs
 hook = Webhook("https://discordapp.com/api/webhooks/734768699973828618/aaWXsr1s2AMuWNxTxM_eruEc5363IasVGpWLlnuMxUasjIJ3QW0gjJpbs4JZ_6muccY8")  # webhook that we are using to post live trades
 app = Chalice(app_name='api')  # define app
-API_KEY = 'PKK07DKWLSMOYWIURAB7'  # alpaca api key used for authentication
-SECRET_KEY = 'SCOTFmPXt4XPCTI7VwxNwyw5LhC6k1PzRLJKxlif'  # alpaca secret key used for authentication
+API_KEY = 'PKYZ7D8EVVMATC0A50Y6'  # alpaca api key used for authentication
+SECRET_KEY = '1MMJ7RVvYkz7pHrD62k0f9iEdK0gveSHwu0e4hWk'  # alpaca secret key used for authentication
 BASE_URL = "https://paper-api.alpaca.markets"  # alpaca url that we are using to post data to
 ORDERS_URL = "https://paper-api.alpaca.markets/v2/orders"  # alpaca url that we are using to post data to
 POSITIONS_URL = "https://paper-api.alpaca.markets/v2/positions"  # alpaca url that we are using to post data to
@@ -19,7 +19,7 @@ ACCOUNT_URL = "https://paper-api.alpaca.markets/v2/account"  # alpaca url that w
 HISTORY_URL = "https://paper-api.alpaca.markets/v2/account/portfolio/history"  # alpaca url that we are using to post data to
 HEADERS = {'APCA-API-KEY-ID': API_KEY, 'APCA-API-SECRET-KEY': SECRET_KEY}  # headers that contains our keys
 STARTING_BALANCE = 12500  # starting equity
-STOCKS = 2  # enter the amount of stocks we are currently trading
+STOCKS = 1  # enter the amount of stocks we are currently trading
 
 # Api verification
 api = alpaca_trade_api.REST(
@@ -50,7 +50,7 @@ def buy_stock():
         side = wh_message['side']  # get side from webhook message (either long entry / long stop loss / long take profit | short entry / short stop loss / short take profit)
         symbol_bars = api.get_barset(symbol, 'minute', 1).df.iloc[0]  # get live price from alpaca
         symbol_price = symbol_bars[symbol]['close']  # get live price from alpaca
-        quantity = round(((float(account.buying_power) / float(wh_message['price'])) / STOCKS) * 0.97)  # divide current available buying power with price of the stock divide that by the amount of possible stocks we are currently buying and finally multiply it by 0.97 this calculation will calculate how many stocks we can buy with 0.97% of our total equity
+        quantity = round(((float(account.buying_power) / float(wh_message['price'])) / STOCKS) * 0.97)  # divide current available buying power with price of the stock divide that by the amount of possible stocks we are currently buying and finally multiply it by 0.97 this calculation will calculate how many stocks we can buy with 97% of our total equity
         balance_change = float(account.equity) - float(account.last_equity)  # compares current equity to yesterdays equity to get the daily profit margin
         total_profit = float(account.equity) - STARTING_BALANCE  # compares current equity to starting balance to get the total profit margin
         total_percentage = 100 * ((float(account.equity) - float(STARTING_BALANCE)) / float(STARTING_BALANCE))   # calculates the total percentage gain
@@ -174,7 +174,7 @@ def buy_stock():
                       "X " + "[CLOSING TRADE, ERROR OCCURRED]" + "\n" +
                       "X " + "{" + current_time + "}" + "\n" +
                       "X " + "Stock: " + wh_message['symbol'] + "\n" +
-                      "X " + "Quantity: " + str(quantity) + "\n" +
+                      "X " + "Quantity: " + "-" + "\n" +
                       "X " + "Error: " + response['message'] + "\n" +
                       "```")
     return {
