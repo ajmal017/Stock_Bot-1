@@ -178,6 +178,6 @@ def buy_stock():
                       "X " + "Error: " + response['message'] + "\n" +
                       "```")
     return {
-        'message': 'I bought the stock!',
+        'message': 'Success!',
         'wh_message': wh_message
     }
