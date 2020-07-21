@@ -1,0 +1,4 @@
+requests~=2.24.0
+pytz~=2020.1
+chalice~=1.15.1
+dhooks~=1.1.3
