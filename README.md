@@ -1,7 +1,7 @@
 # Stock_Bot
 ### Algorithms are not included in this code, use public ones or create your own
 ### Algorithms written using tradingview.com pinescript
-### Algorithms used:
+### Algorithms i used for testing:
 * Short and long
 * Stochastic algorithm (18 day lookback)
 * HMA(Hull Moving Average) (250 day lookback)
