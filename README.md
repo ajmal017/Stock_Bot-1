@@ -12,8 +12,9 @@
 ### Usage:
 Simply deploy this code via aws chalice and copy the address into your tradingview.com webhook alert
 Change the Alpcaca credentials to your own
+Change the Discord webhook to your own
 
 ##### this is my second python project
 ##### this code is deployed using aws chalice
 ##### listens tradingview alerts and turns it into a api call and passes to a broker api
-##### posts live trades via webhook
+##### posts live trades via discord webhook
