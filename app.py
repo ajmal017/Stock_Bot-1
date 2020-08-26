@@ -7,10 +7,10 @@ from dhooks import Webhook
 from datetime import datetime
 
 # Configs
-hook = Webhook("https://discordapp.com/api/webhooks/729645128591081513/3sSDtFLES3R-yV2YBtbqLJC_98OsIROfiAuvNbloX9LiQd81LeKFwxjhFgxfBajQ8dr-")  # webhook that we are using to post live trades
+hook = Webhook("YOUR DISCORD WEBHOOK")  # webhook that we are using to post live trades
 app = Chalice(app_name='api')  # define app
-API_KEY = 'PKORFSQ5J7FQXN28S20F'  # alpaca api key used for authentication
-SECRET_KEY = 'TKjVdKzNLgxDoKYk8qr6vuAXYwBUjshmiOaxw6LL'  # alpaca secret key used for authentication
+API_KEY = 'YOUR API KEY'  # alpaca api key used for authentication
+SECRET_KEY = 'YOUR SECRET KEY'  # alpaca secret key used for authentication
 BASE_URL = "https://paper-api.alpaca.markets"  # alpaca url that we are using to post data to
 ORDERS_URL = "https://paper-api.alpaca.markets/v2/orders"  # alpaca url that we are using to post data to
 POSITIONS_URL = "https://paper-api.alpaca.markets/v2/positions"  # alpaca url that we are using to post data to
